@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RealWordUnitTest.Web.Models;
 using RealWorldUnitTest.Web.Repository;
 
@@ -63,7 +62,7 @@ namespace RealWorldUnitTest.Web.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             var product = await _repository.GetById(id.Value);
@@ -88,7 +87,7 @@ namespace RealWorldUnitTest.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                    _repository.Update(product);
+                _repository.Update(product);
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
@@ -116,7 +115,7 @@ namespace RealWorldUnitTest.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var product =await _repository.GetById(id);
+            var product = await _repository.GetById(id);
             _repository.Delete(product);
             return RedirectToAction(nameof(Index));
         }
