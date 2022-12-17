@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RealWorldUnitTest.Web.Models;
 
 namespace RealWordUnitTest.Web.Models
 {
@@ -15,6 +16,7 @@ namespace RealWordUnitTest.Web.Models
 
         public virtual DbSet<Product> Product { get; set; }
 
+        public virtual DbSet<Category> Category { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>(entity =>

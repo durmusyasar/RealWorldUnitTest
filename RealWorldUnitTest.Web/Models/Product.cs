@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RealWorldUnitTest.Web.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealWordUnitTest.Web.Models
 {
@@ -17,5 +18,9 @@ namespace RealWordUnitTest.Web.Models
 
         [Required]
         public string Color { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public Category Category { get; set; }
     }
 }
